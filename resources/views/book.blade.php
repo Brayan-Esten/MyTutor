@@ -5,10 +5,8 @@
     <h2>Book-a-Tutor</h2>
 
     @foreach ($data as $row)
-        <a href="/book/{{ $row['slug'] }}"><h5>{{ $row['nama'] }}</h5></a>
-
-        <h5>{{ $row['mapel'] }}</h5>
-        <h5>{{ $row['status_akademik'] }}</h5>
+        <a href="/book/{{ $row->slug }}"><h5>{{ $row->name }}</h5></a>
+        <p>{{ $row->exert }}</p>
         <br>
     @endforeach
 

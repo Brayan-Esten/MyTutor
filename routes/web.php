@@ -2,6 +2,7 @@
 
 use App\Models\Tutor;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TutorController;
 
 
 /*
@@ -41,18 +42,11 @@ Route::get('/about/{nama?}/{jurusan?}', function ($nama = null, $jurusan = null)
 });
 
 
-Route::get('/book', function () {
+Route::get('/book', [TutorController::class, 'index']);
 
-    return view('book', [
-        'title' => 'Book-a-Tutor',
-        'data' => Tutor::all()
-    ]);
-});
 
-Route::get('/book/{slug}', function ($slug) {
+// kurung kurawal itu parameter, auto inject ke method 'detail' di class TutorController
+// {method_name} --> param wajib
+// {method_name?} --> param optional
 
-    return view('detail', [
-        'title' => 'Detail',
-        'data' => Tutor::find($slug)
-    ]);
-});
+Route::get('/book/{tutor:slug}', [TutorController::class, 'detail']);

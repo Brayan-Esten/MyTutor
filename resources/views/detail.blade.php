@@ -2,9 +2,8 @@
 
 @section('container')
 
-        <h5>{{ $data['nama'] }}</h5>
-        <h5>{{ $data['mapel'] }}</h5>
-        <h5>{{ $data['status_akademik'] }}</h5>
+        <h5>{{ $data->name }}</h5>
+        <p>{{ $data->body }}</p>
 
         <a href="/book">Back</a>
 
