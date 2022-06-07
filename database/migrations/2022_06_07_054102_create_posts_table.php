@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tutors', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->foreignId('category_id');
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->text('exert');
-            $table->text('body');
-            $table->timestamp('joined_at')->nullable();
+            $table->string('title');
+            $table->string('slug');
+            $table->text('preview');
+            $table->text('detail');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutors');
+        Schema::dropIfExists('posts');
     }
 };
