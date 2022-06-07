@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Tutor;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TutorController;
 
@@ -50,3 +51,18 @@ Route::get('/book', [TutorController::class, 'index']);
 // {method_name?} --> param optional
 
 Route::get('/book/{tutor:slug}', [TutorController::class, 'detail']);
+
+Route::get('/category/{category:slug}', function(Category $category){
+    return view('category', [
+        'title' => $category->name,
+        'data' => $category->tutor,
+        'category' => $category->name
+    ]);
+});
+
+Route::get('/categories', function () {
+    return view('categories', [
+        'title' => 'Subject Categories',
+        'data' => Category::all()
+    ]);
+});
