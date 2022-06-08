@@ -24,7 +24,8 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('home', [
-        'title' => 'Home'
+        'title' => 'Home',
+        'active' => 'home'
     ]);
 });
 
@@ -32,40 +33,25 @@ Route::get('/', function () {
 Route::get('/about/{nama?}/{jurusan?}', function ($nama = null, $jurusan = null) {
     return view('about', [
         'title' => 'About',
+        'active' => 'about',
         'nama' => $nama,
         'jurusan' => $jurusan
     ]);
 });
 
 
-Route::get('/post', [PostController::class, 'index']);
-
-
 // kurung kurawal itu parameter, auto inject ke method 'detail' di class TutorController
 // {method_name} --> param wajib
 // {method_name?} --> param optional
 
-Route::get('/post/{post:slug}', [PostController::class, 'detail']);
+Route::get('/post', [PostController::class, 'index']);
 
-Route::get('/category/{category:slug}', function(Category $category){
-    return view('post', [
-        'title' => "Posts by Category : $category->name",
-        'active' => 'categories',
-        'data' => $category->posts->load('user', 'category')
-    ]);
-});
+Route::get('/post/{post:slug}', [PostController::class, 'detail']);
 
 Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Category List',
-        'active' =>'categories',
+        'active' =>'category',
         'data' => Category::all()
-    ]);
-});
-
-Route::get('/author/{user:username}', function(User $user){
-    return view('post', [
-        'title' => "Posts by Author : $user->name",
-        'data' => $user->posts->load('user', 'category')
     ]);
 });
