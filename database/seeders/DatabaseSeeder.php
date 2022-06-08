@@ -24,18 +24,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // User::create([
-        //     'name' => 'Brayan',
-        //     'email' => 'brayan@mail,com',
-        //     'password' => bcrypt(12345)
-        // ]);
-
-        // User::create([
-        //     'name' => 'Bayu',
-        //     'email' => 'bayu@mail,com',
-        //     'password' => bcrypt(54321)
-        // ]);
-
         User::factory(3)->create();
 
         Category::create([
@@ -54,43 +42,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Post::factory(20)->create();
-
-        // Post::create([
-        //     'user_id' => 1,
-        //     'category_id' => 1,
-        //     'title' => 'first post',
-        //     'slug' => 'first-post',
-        //     'preview' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, pariatur? Dolor cumque natus commodi aspernatur?',
-        //     'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias illum animi corporis, earum culpa accusamus ut. Saepe tempora dolorem ipsum aperiam. Deleniti unde inventore sapiente. Aut sit autem quo quasi.'
-        // ]);
-
-        // Post::create([
-        //     'user_id' => 1,
-        //     'category_id' => 2,
-        //     'title' => 'second post',
-        //     'slug' => 'second-post',
-        //     'preview' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, pariatur? Dolor cumque natus commodi aspernatur?',
-        //     'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias illum animi corporis, earum culpa accusamus ut. Saepe tempora dolorem ipsum aperiam. Deleniti unde inventore sapiente. Aut sit autem quo quasi.'
-        // ]);
-
-
-        // Post::create([
-        //     'user_id' => 2,
-        //     'category_id' => 1,
-        //     'title' => 'third post',
-        //     'slug' => 'third-post',
-        //     'preview' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, pariatur? Dolor cumque natus commodi aspernatur?',
-        //     'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias illum animi corporis, earum culpa accusamus ut. Saepe tempora dolorem ipsum aperiam. Deleniti unde inventore sapiente. Aut sit autem quo quasi.'
-        // ]);
-
-        // Post::create([
-        //     'user_id' => 2,
-        //     'category_id' => 2,
-        //     'title' => 'fourth post',
-        //     'slug' => 'fourth-post',
-        //     'preview' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, pariatur? Dolor cumque natus commodi aspernatur?',
-        //     'detail' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias illum animi corporis, earum culpa accusamus ut. Saepe tempora dolorem ipsum aperiam. Deleniti unde inventore sapiente. Aut sit autem quo quasi.'
-        // ]);
 
     }
 }

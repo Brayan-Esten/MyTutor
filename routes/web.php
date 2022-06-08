@@ -1,8 +1,10 @@
 <?php
 
-use App\Models\Post;
+
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -40,13 +42,13 @@ Route::get('/about/{nama?}/{jurusan?}', function ($nama = null, $jurusan = null)
 });
 
 
-// kurung kurawal itu parameter, auto inject ke method 'detail' di class TutorController
+// kurung kurawal itu parameter, auto inject ke method 'detail' di class PostController
 // {method_name} --> param wajib
 // {method_name?} --> param optional
 
-Route::get('/post', [PostController::class, 'index']);
+Route::get('/post', [PostController::class, 'index']); // panggil class PostController method index()
 
-Route::get('/post/{post:slug}', [PostController::class, 'detail']);
+Route::get('/post/{post:slug}', [PostController::class, 'detail']); // pangil class PostController method detail()
 
 Route::get('/categories', function () {
     return view('categories', [

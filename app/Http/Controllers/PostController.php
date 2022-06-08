@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+// kek import package di java
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -18,16 +20,17 @@ class PostController extends Controller
             $title .= " in $category->name";
         }
 
-        if (request('user')) {
-            $user = User::firstWhere('username', request('user'));
+        if (request('username')) {
+            $user = User::firstWhere('username', request('username'));
             $title .= " by $user->name";
         }
 
         return view('post', [
             'title' => "All Posts $title",
-            'active' => 'post',
-            'data' => Post::with('user', 'category', 'user')->latest()->filter(request(['search', 'category', 'user']))->paginate(7)->withQueryString()
-            // 'data' => Post::all()
+            'active' => 'posts',
+            'data' => Post::with('category', 'user')->latest()
+                        ->filter(request(['search', 'category', 'username']))
+                        ->paginate(7)->withQueryString()
         ]);
     }
 
@@ -35,7 +38,7 @@ class PostController extends Controller
     {
         return view('detail', [
             'title' => 'Post Detail',
-            'active' =>'post',
+            'active' =>'posts',
             'post' => $post
         ]);
     }

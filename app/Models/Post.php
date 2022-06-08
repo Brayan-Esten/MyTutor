@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with = ['user', 'category'];
+    protected $with = ['category', 'user'];
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -21,23 +21,26 @@ class Post extends Model
     }
 
     public function scopeFilter($query, array $filters){
-        $query->when($filters['category'] ?? false, function ($query, $category) {
-            return $query->whereHas('category', function($query) use ($category){
-                $query->where('slug', $category);
-            });
-        });
 
-        $query->when($filters['user'] ?? false, function ($query, $user) {
-            return $query->whereHas('user', function ($query) use ($user) {
-                $query->where('username', $user);
-            });
-        });
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where(function($query) use ($search){
-                    $query->where('title', 'like', '%'.$search.'%')
-                        ->orWhere('preview', 'like', '%'.$search.'%');
+            return $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('preview', 'like', '%' . $search . '%');
             });
         });
+
+        $query->when($filters['category'] ?? false, function ($query, $category) {
+            return $query->whereHas('category', fn ($query) => 
+                    $query->where('slug', $category)
+            );
+        });
+
+        $query->when($filters['username'] ?? false, function ($query, $username) {
+            return $query->whereHas('user', fn ($query) =>
+                    $query->where('username', $username)
+            );
+        });
+
     }
 }
