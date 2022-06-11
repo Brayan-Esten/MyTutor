@@ -30,8 +30,17 @@
     @if ($data->count())
         {{-- main banner --}}
         <div class="card mb-3">
-            <img src="https://source.unsplash.com/1200x400?{{ $data[0]->category->name }}" class="card-img-top"
-                alt="{{ $data[0]->category->name }}">
+
+            @if ($data[0]->image)
+                <div style="max-height: 325px; overflow:hidden;">
+                    <img src="{{ asset('storage/' . $data[0]->image) }}" alt="{{ $data[0]->category->name }}"
+                        class="img-fluid mt-3">
+                </div>
+            @else
+                <img src="https://source.unsplash.com/1200x400?{{ $data[0]->category->name }}"
+                    alt="{{ $data[0]->category->name }}" class="img-fluid mt-3">
+            @endif
+
             <div class="card-body text-center">
                 <h3 class="card-title">
                     {{-- title onclick to detail --}}
@@ -81,20 +90,25 @@
 
                             </div>
 
-                            <img src="https://source.unsplash.com/500x500?{{ $row->category->name }}"
-                                class="card-img-top" alt="{{ $row->category->name }}" />
+                            @if ($row->image)
+                                    <img src="{{ asset('storage/' . $row->image) }}"
+                                        alt="{{ $row->category->name }}" class="img-fluid mt-3">
+                            @else
+                                <img src="https://source.unsplash.com/1200x400?{{ $row->category->name }}"
+                                    alt="{{ $row->category->name }}" class="img-fluid mt-3">
+                            @endif
 
                             <div class="card-body">
                                 <a class="text-decoration-none" href="/post/{{ $row->slug }}">
                                     <h5>{{ $row->title }}</h5>
                                     <p>
                                         <small>
-                                            By : 
+                                            By :
                                             {{-- author --}}
                                             <a href="/post?username={{ $row->user->username }}">
                                                 {{ $row->user->name }}
                                             </a>
-                                            
+
                                             {{ $row->created_at->diffForHumans() }}
                                         </small>
                                     </p>

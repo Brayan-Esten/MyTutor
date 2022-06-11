@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-lg-8">
-        <form action="/dashboard/posts" method="post" class="mb-5">
+        <form action="/dashboard/posts" method="post" class="mb-5" enctype="multipart/form-data">
 
             {{-- wajib di tiap form --}}
             @csrf 
@@ -55,6 +55,23 @@
             </div>
 
 
+            {{-- image --}}
+            <div class="mb-3">
+                <label for="image" class="form-label @error('image') is-invalid @enderror">Post's Image</label>
+
+                <img src="" alt="" class="img-preview img-fluid mb-3 col-sm-5">
+
+                <input class="form-control" type="file" id="image" name="image" onchange="previewImg()">
+                @error('image')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+
+                
+            </div>
+
+
             {{-- detail --}}
             <div class="mb-3">
                 <label for="detail" class="form-label">Body</label>
@@ -79,6 +96,24 @@
             .then(response => response.json())
             .then(data => slug.value = data.slug)
         });
+
+
+        function previewImg(){
+            const img = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+            
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent){
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+            
+
+
 
 
     </script>

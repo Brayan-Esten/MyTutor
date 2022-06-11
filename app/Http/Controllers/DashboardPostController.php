@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
@@ -45,12 +46,18 @@ class DashboardPostController extends Controller
     public function store(Request $request)
     {
         //
+        
         $validated = $request->validate([
             'title' => ['required', 'max:100'],
             'slug' => ['required', 'unique:posts'],
             'category_id' => ['required'],
+            'image' => ['image', 'file', 'max:1024'],
             'detail' => ['required']
         ]);
+
+        if($request->file('image')){
+            $validated['image'] = $request->file('image')->store('post-images');
+        }
 
         $validated['user_id'] = auth()->user()->id;
         $validated['preview'] = Str::limit(strip_tags($request->detail, 100));
@@ -103,15 +110,25 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => ['required', 'max:100'],
             'category_id' => ['required'],
+            'image' => ['image', 'file', 'max:1024'],
             'detail' => ['required']
         ];
 
         if($request->slug != $post->slug){
             $rules['slug'] = ['required', 'unique:posts'];
         }
-
+        
         $validated = $request->validate($rules);
 
+        if ($request->file('image')) {
+
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+
+            $validated['image'] = $request->file('image')->store('post-images');
+        }
+        
         $validated['user_id'] = auth()->user()->id;
         $validated['preview'] = Str::limit(strip_tags($request->detail, 100));
 
@@ -132,6 +149,10 @@ class DashboardPostController extends Controller
     {
         //
         Post::destroy($post->id);
+
+        if ($post->image) {
+            Storage::delete($post->image);
+        }
 
         return redirect('/dashboard/posts')->with('success', 'post has been deleted');
     }
