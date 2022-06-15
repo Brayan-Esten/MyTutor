@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\AdminCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,35 +21,35 @@ use App\Http\Controllers\DashboardPostController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// register route
+Route::get('/register', [RegisterController::class, 'index'])->middleware(('guest'));
+Route::post('/register', [RegisterController::class, 'store']);
 
+
+// login route
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+
+// home
 Route::get('/', function () {
     return view('home', [
         'title' => 'Home',
-        'active' => 'home'
     ]);
 });
 
-
-Route::get('/about/{nama?}/{jurusan?}', function ($nama = null, $jurusan = null) {
+// about
+Route::get('/about', function(){
     return view('about', [
-        'title' => 'About',
-        'active' => 'about',
-        'nama' => $nama,
-        'jurusan' => $jurusan
+        'title' => 'About'
     ]);
 });
 
-
-// kurung kurawal itu parameter, auto inject ke method 'detail' di class PostController
-// {method_name} --> param wajib
-// {method_name?} --> param optional
-
-Route::get('/post', [PostController::class, 'index']); // panggil class PostController method index()
-
-Route::get('/post/{post:slug}', [PostController::class, 'detail']); // pangil class PostController method detail()
+Route::get('/book', function(){
+    return view('book', [
+        'title' => 'Book-a-Tutor'
+    ]);
+});
 
 Route::get('/categories', function () {
     return view('categories', [
@@ -58,11 +59,7 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware(('guest'));
-Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -75,3 +72,12 @@ Route::get('/dashboard', function(){
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+
+Route::get('test/design', function(){
+    return view('tutor', [
+        'title' => 'test',
+        'active' => 'test'
+    ]);
+});

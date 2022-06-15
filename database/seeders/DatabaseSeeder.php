@@ -25,30 +25,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
+            'membership_id' => 1,
             'name' => 'Brayan Esten',
-            'username' => 'itsbrayan',
             'email' => 'bryanesten1221@gmail.com',
-            'password' => bcrypt('123')
+            'password' => bcrypt('123'),
+            'credit' => 150000,
+            'level' => 14
         ]);
 
-        User::factory(3)->create();
-
-        Category::create([
-            'name' => 'Web Programming',
-            'slug' => 'web-programming'
-        ]);
-
-        Category::create([
-            'name' => 'Object Oriented',
-            'slug' => 'object-oriented'
-        ]);
-
-        Category::create([
-            'name' => 'Multimedia Systems',
-            'slug' => 'multimedia-systems'
-        ]);
-
-        Post::factory(20)->create();
+        // User::factory(3)->create();
 
     }
 }

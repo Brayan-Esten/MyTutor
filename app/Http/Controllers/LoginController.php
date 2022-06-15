@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //
+    // login page
     public function index(){
         return view('login.index', [
-            'title' => 'login',
-            'active' => 'login'
+            'title' => 'Login'
         ]);
     }
 
+    // login logic and authenticate
     public function authenticate(Request $request){
         
         $credentials = $request->validate([
@@ -22,13 +22,14 @@ class LoginController extends Controller
             'password' => ['required']
         ]);
 
+        // if pass authentication
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
 
-        return back()->with('logInError', 'Login failed!');
+        // else
+        return back()->with('loginError', 'Wrong e-mail or password !');
     }
 
     public function logout(Request $request){

@@ -14,28 +14,29 @@ class RegisterController extends Controller
     {
         return view('register.index', [
             'title' => 'Register',
-            'active' => 'register'
         ]);
     }
 
     public function store(Request $request){
 
         $validated =$request->validate([
-            'name' => ['required', 'max:255'],
-            'username' => ['required', 'min:5', 'max:255', 'unique:users'],
-            'email' => ['required', 'email:dns', 'unique:users'],
-            'password' => ['required', 'min:3', 'max:255']
+            'name' => ['required', 'min:3', 'max:50'],
+            'email' => ['required', 'unique:users'],
+            'password' => ['required', 'min:3', 'max:50']
         ]);
 
-        // $validated['password'] = bcrypt($validated['password']);
-        $validated['password'] = Hash::make($validated['password']);
+        $validated['password'] = bcrypt($validated['password']);
 
+        // new user's membership by default is silver, and gets free 1 trial (free credit)
+        $validated['membership_id'] = 1;
+        $validated['credit'] = 150000;
+        $validated['level'] = 0;
 
         User::create($validated);
-        // $request->session()->flash('success', 'Registration successful! Please log in');
 
+        // $request->session()->flash('success', 'Registration successful! Please log in');
         // or
 
-        return redirect('/login')->with('success', 'Registration successful! Please log in');
+        return redirect('/login')->with('success', 'Registration successful ! Please login');
     }
 }
