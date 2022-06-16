@@ -7,7 +7,10 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\EduLvl;
 use App\Models\Field;
+use App\Models\Membership;
 use App\Models\Subject;
+use App\Models\Tutor;
+use App\Models\Transaction;
 
 
 class DatabaseSeeder extends Seeder
@@ -29,7 +32,21 @@ class DatabaseSeeder extends Seeder
             'level' => 14
         ]);
 
-        // User::factory(3)->create();
+        User::factory(3)->create();
+
+        Membership::create([
+            'tier' => 'silver'
+        ]);
+
+        Membership::create([
+            'tier' => 'gold'
+        ]);
+
+        Membership::create([
+            'tier' => 'diamond'
+        ]);
+
+
 
         EduLvl::create([
             'level' => 'primary'
@@ -42,6 +59,8 @@ class DatabaseSeeder extends Seeder
         EduLvl::create([
             'level' => 'senior-high'
         ]);
+
+        
 
         Field::create([
             'name' => 'mathematics'
@@ -225,5 +244,9 @@ class DatabaseSeeder extends Seeder
             'field_id' => 14,
             'level_id' => 3
         ]);
+
+        Tutor::factory(80)->create();
+
+        Transaction::factory(160)->create();
     }
 }

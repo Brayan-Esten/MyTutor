@@ -16,8 +16,45 @@ class TutorFactory extends Factory
      */
     public function definition()
     {
+
+        // schedule randomizer
+        $randSchedule = '';
+        for($i = 0; $i < 5; $i++){
+            $rand = mt_rand(7, 20);
+            if($rand < 10) $randSchedule .= '0' . $rand;
+            else $randSchedule .= $rand;
+            $randSchedule .= ';';
+        }
+
+
+        // instituion and last_ed randomizer
+        $institutions = ['School', 'University'];
+        $institution = $institutions[mt_rand(0, 1)];
+
+        $ed_list = ['High-School Student', 'College-Student', 'Teacher', 'Lecturer', 'Instructor'];
+        if($institution == 'School') $last_ed = $ed_list[mt_rand(0, 1)];
+        else $last_ed = $ed_list[mt_rand(2, 3)];
+
+
+        // teaching approach randomizer
+        $approaches = [
+            'Interactive', 'Collaborative', 'Detailed Explanation', 
+            'Daily Event Analogy', 'Laid Back Approach', 'Storytelling'
+        ];
+        $teaching_approach = $approaches[mt_rand(0, 5)];
+
+
         return [
             //
+            'subject_id' => $this->faker->numberBetween(1, 24),
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
+            'schedule' => $randSchedule,
+            'institution' => $institution,
+            'last_ed' => $last_ed,
+            'bio' => $this->faker->paragraph(1),
+            'teaching_approach' => $teaching_approach,
+
         ];
     }
 }

@@ -21,6 +21,12 @@ class TransactionController extends Controller
     }
 
     public function tutor(Request $request){
+
+        $request->validate([
+            'subject_id' => ['required'],
+            'start_time' => ['required']
+        ]);
+
         return view('book.tutor', [
             'title' => 'Available Tutors',
             'tutors' => Tutor::where('subject_id', $request->subject_id)

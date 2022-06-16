@@ -13,6 +13,7 @@ class Tutor extends Model
     use Sluggable;
 
     protected $guarded = ['id'];
+    protected $with = ['transactions', 'subject'];
 
     public function transactions()
     {
@@ -26,11 +27,11 @@ class Tutor extends Model
 
     public function scopeVacant($query, $start_time, $date)
     {
-        return $query->whereHas('transactions',
+        return $query->whereDoesntHave('transactions',
             fn ($query) =>
-            $query->where('start_time', $start_time)
-                ->where('$date', $date)
-                ->doesntExist()
+                $query
+                ->where('start_time', 'LIKE', $start_time)
+                ->where('date', $date)
         );
     }
 

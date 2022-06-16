@@ -51,7 +51,7 @@ Route::get('/about', function(){
 // book route
 Route::get('/book', [TransactionController::class, 'index']);
 
-Route::get('/book/tutor', [TransactionController::class, 'tutor']);
+Route::post('/book/tutor', [TransactionController::class, 'tutor']);
 
 
 

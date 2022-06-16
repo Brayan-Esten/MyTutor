@@ -16,7 +16,7 @@ class Transaction extends Model
     }
 
     public function tutor(){
-        return $this->belongsTo(Tutor::class);
+        return $this->belongsTo(Tutor::class, 'tutor_id');
     }
 
     

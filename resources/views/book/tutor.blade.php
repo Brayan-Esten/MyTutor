@@ -2,6 +2,8 @@
 
 @section('container')
 
-    <p>{{ date("Y-m-d") }}</p>
+    @foreach ($tutors as $tutor)
+        {{ $tutor->name }} <br>
+    @endforeach
 
 @endsection
