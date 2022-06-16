@@ -35,7 +35,7 @@
 
                         {{-- email --}}
                         <div class="form-floating">
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" name="email" autofocus required value={{ old('email') }}>
+                            <input type="email" class=" c-border form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" name="email" autofocus required value={{ old('email') }}>
 
                             <label for="email">Email Address</label>
                             @error('email')

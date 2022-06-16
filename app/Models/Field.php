@@ -11,7 +11,8 @@ class Field extends Model
 
     protected $guarded = ['id'];
 
-    public function subjects(){
+    public function subjects()
+    {
         return $this->hasMany(Subject::class, 'field_id');
     }
 

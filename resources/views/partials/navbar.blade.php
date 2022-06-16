@@ -28,7 +28,7 @@
 
                     {{-- book a tutor nav --}}
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('/book*') ? 'active' : '' }}" 
+                        <a class="nav-link {{ Request::is('book*') ? 'active' : '' }}" 
                         href="/book">
                             Book-a-Tutor
                         </a>
@@ -36,7 +36,7 @@
 
                     {{-- upgrade membership nav --}}
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('/membership*') ? 'active' : '' }}" 
+                        <a class="nav-link {{ Request::is('membership*') ? 'active' : '' }}" 
                         href="/membership">
                             Upgrade
                         </a>
@@ -45,7 +45,7 @@
 
                     {{-- about nav --}}
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('/about') ? 'active' : '' }}" 
+                        <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" 
                         href="/about">
                             About
                         </a>

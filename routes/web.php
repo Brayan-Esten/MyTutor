@@ -3,12 +3,14 @@
 
 use App\Models\Category;
 
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\TransactionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,11 +47,13 @@ Route::get('/about', function(){
     ]);
 });
 
-Route::get('/book', function(){
-    return view('book', [
-        'title' => 'Book-a-Tutor'
-    ]);
-});
+
+// book route
+Route::get('/book', [TransactionController::class, 'index']);
+
+Route::get('/book/tutor', [TransactionController::class, 'tutor']);
+
+
 
 Route::get('/categories', function () {
     return view('categories', [
