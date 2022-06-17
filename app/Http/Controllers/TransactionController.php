@@ -50,7 +50,24 @@ class TransactionController extends Controller
             'field' => $field,
             'edulvl' => $edulvl,
             'date' => $date,
-            'start_time' => $start_time
+            'start_time' => $start_time,
+            'credit' => auth()->user()->credit
+        ]);
+    }
+
+    public function receipt(Tutor $tutor, Field $field, EduLvl $edulvl, $date, $start_time, Request $request){
+
+        $request->validate([
+            'price' => 'lte:' . (int) auth()->user()->credit
+        ]);
+
+        return view('book.receipt', [
+            'title' => 'Receipt',
+            'tutor' => $tutor,
+            'field' => $field,
+            'edulvl' => $edulvl,
+            'date' => $date,
+            'start_time' => $start_time,
         ]);
     }
 

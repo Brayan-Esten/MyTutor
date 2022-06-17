@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
 
-            <a href="{{ url()->previous() }}" class="mb-5">
+            <a href="/book" class="mb-5">
                 <i class="bi bi-caret-left-square-fill" style="font-size: 3rem; color: var(--grey)"></i>
             </a>
 

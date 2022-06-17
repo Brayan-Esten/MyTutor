@@ -5,6 +5,10 @@
     --yellow: #f8b501;
 }
 
+*{
+  user-select: none;
+}
+
 a{
     text-decoration: none !important;
 }
@@ -50,8 +54,8 @@ a{
 }
 
 .c-active{
-  border: 10ps #44dffa;
-  box-shadow: 0 0 5px #2a90a2, 0 0 20px #31a7bc, 0 0 80px #3dd2ed;
+  border: 10px #44dffa !important;
+  box-shadow: 0 0 5px #3fcde6, 0 0 20px #3dd2ed !important;
   filter: none;
 }
 
@@ -168,4 +172,14 @@ a{
 .checkout{
   width: 90%;
   margin: auto;
+}
+
+.payment-method{
+  width: 300px; 
+  height: 150px; 
+  background-color: var(--white);
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25); 
+  border-radius: 10px; 
+  padding: 0.6em;
+  cursor: pointer;
 }

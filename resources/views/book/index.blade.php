@@ -72,13 +72,14 @@
         </div>
     </section>
 
+    <h1 class="my-5">Choose your desired time</h1>
+
     <div class="col-lg-4">
 
         <form action="/book/tutor" method="get">
 
             @csrf
 
-            <h1 class="my-5">Choose your desired time</h1>
 
             <input class="@error('subject_id') is-invalid @enderror" type="hidden" name="subject_id" id="subject_id"
                 value="">

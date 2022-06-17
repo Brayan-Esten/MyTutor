@@ -51,14 +51,16 @@ Route::get('/about', function(){
 // book route
 
 // display subjects
-Route::get('/book', [TransactionController::class, 'index']);
+Route::get('/book', [TransactionController::class, 'index'])->middleware('auth');
 
 // display available tutors
-Route::get('/book/tutor', [TransactionController::class, 'tutor']);
+Route::get('/book/tutor', [TransactionController::class, 'tutor'])->middleware('auth');
 
 // checkout
-Route::get('/book/checkout/{tutor:slug}/{field}/{edulvl}/{date}/{start_time}', [TransactionController::class, 'checkout']);
+Route::get('/book/checkout/{tutor:slug}/{field}/{edulvl}/{date}/{start_time}', [TransactionController::class, 'checkout'])->middleware('auth');
 
+// receipt
+Route::post('/book/receipt/{tutor}/{field}/{edulvl}/{date}/{start_time}', [TransactionController::class, 'receipt'])->middleware('auth');
 
 
 
