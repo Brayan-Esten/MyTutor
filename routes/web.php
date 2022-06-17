@@ -49,19 +49,16 @@ Route::get('/about', function(){
 
 
 // book route
+
+// display subjects
 Route::get('/book', [TransactionController::class, 'index']);
 
-Route::post('/book/tutor', [TransactionController::class, 'tutor']);
+// display available tutors
+Route::get('/book/tutor', [TransactionController::class, 'tutor']);
 
+// checkout
+Route::get('/book/checkout/{tutor:slug}/{field}/{edulvl}/{date}/{start_time}', [TransactionController::class, 'checkout']);
 
-
-Route::get('/categories', function () {
-    return view('categories', [
-        'title' => 'Category List',
-        'active' =>'category',
-        'data' => Category::all()
-    ]);
-});
 
 
 

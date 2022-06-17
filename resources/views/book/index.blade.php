@@ -72,26 +72,27 @@
         </div>
     </section>
 
-    <div class="col-lg-8">
+    <div class="col-lg-4">
 
-        <form action="/book/tutor" method="post">
+        <form action="/book/tutor" method="get">
 
             @csrf
 
             <h1 class="my-5">Choose your desired time</h1>
 
-            <input class="@error('subject_id') is-invalid @enderror" type="hidden" name="subject_id" id="subject_id" value="">
-            
+            <input class="@error('subject_id') is-invalid @enderror" type="hidden" name="subject_id" id="subject_id"
+                value="">
+
             @error('subject_id')
                 <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
                     {{ 'Please choose a subject first' }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @enderror
-            
+
             @error('start_time')
                 <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
-                    {{ 'Please choose a schedule first '}}
+                    {{ 'Please choose a schedule first ' }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @enderror
@@ -137,7 +138,6 @@
                 subjectId.value = e.id;
             });
         });
-        
 
     </script>
 @endsection

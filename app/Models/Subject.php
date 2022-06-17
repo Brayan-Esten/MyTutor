@@ -21,4 +21,5 @@ class Subject extends Model
     {
         return $this->belongsTo(EduLvl::class, 'level_id');
     }
+
 }

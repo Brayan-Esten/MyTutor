@@ -43,6 +43,18 @@ a{
 }
 
 
+/* custom override */
+
+.c-border{
+  border-radius: 5px 5px 0 0 !important;
+}
+
+.c-active{
+  border: 10ps #44dffa;
+  box-shadow: 0 0 5px #2a90a2, 0 0 20px #31a7bc, 0 0 80px #3dd2ed;
+  filter: none;
+}
+
 
 /* slider */
 
@@ -87,7 +99,7 @@ a{
   border-radius: 15px;
   position: relative;
   cursor: pointer;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .subject-image {
@@ -151,16 +163,9 @@ a{
 #senior .pre-btn,
 #senior .nxt-btn{
   background-color: #3DB7E4;
-;
 }
 
-
-.c-border{
-  border-radius: 5px 5px 0 0 !important;
-}
-
-.c-active{
-  border: 10ps #44dffa;
-  box-shadow: 0 0 5px #36b8cf, 0 0 20px #36b8cf;
-  filter: none;
+.checkout{
+  width: 90%;
+  margin: auto;
 }

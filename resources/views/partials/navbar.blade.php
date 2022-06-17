@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--grey); ">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--black); ">
         <div class="container-fluid d-flex justify-content-around">
 
 

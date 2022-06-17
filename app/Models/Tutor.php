@@ -22,10 +22,10 @@ class Tutor extends Model
 
     public function subject()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsTo(Subject::class, 'subject_id');
     }
 
-    public function scopeVacant($query, $start_time, $date)
+    public function scopeVacant($query, $date, $start_time)
     {
         return $query->whereDoesntHave('transactions',
             fn ($query) =>

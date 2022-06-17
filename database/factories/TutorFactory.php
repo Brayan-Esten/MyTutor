@@ -44,17 +44,22 @@ class TutorFactory extends Factory
         $teaching_approach = $approaches[mt_rand(0, 5)];
 
 
+        // rating randomizer
+        $rating = 4.0;
+        $decimals = mt_rand(1, 100) / 100;
+        $rating += $decimals;
+
         return [
             //
             'subject_id' => $this->faker->numberBetween(1, 24),
             'name' => $this->faker->name(),
             'slug' => $this->faker->slug(),
             'schedule' => $randSchedule,
-            'institution' => $institution,
+            'institution' => $this->faker->city() . ' ' . $institution,
             'last_ed' => $last_ed,
             'bio' => $this->faker->paragraph(1),
             'teaching_approach' => $teaching_approach,
-
+            'rating' => $rating
         ];
     }
 }
