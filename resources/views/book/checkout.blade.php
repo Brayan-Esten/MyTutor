@@ -82,8 +82,7 @@
         {{-- payment method --}}
         <div class="ms-5 mb-5 d-flex" style="width: 90%;">
 
-            <div class="d-flex justify-content-around align-items-center me-5 payment-method"
-            data-price="101">
+            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="101" id="ovo">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/ovo.jpg"
                         style="width: 100%; border-radius: 5px;
@@ -92,8 +91,7 @@
                 <h3>IDR 101K</h3>
             </div>
 
-            <div class="d-flex justify-content-around align-items-center me-5 payment-method"
-            data-price="102">
+            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="102" id="gopay">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/gopay.png"
                         style="width: 100%; border-radius: 5px;
@@ -102,8 +100,7 @@
                 <h3>IDR 102K</h3>
             </div>
 
-            <div class="d-flex justify-content-around align-items-center me-5 payment-method"
-            data-price="100">
+            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="100" id="dana">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/dana.jpg"
                         style="width: 100%; border-radius: 5px;
@@ -115,56 +112,61 @@
         </div>
 
         <div class="col-lg-4 ms-5 mb-5">
-            <form action="/book/receipt/{{ $tutor->slug }}/{{ $field->id }}/{{ $edulvl->id }}/{{ $date }}/{{ $start_time }}" method="post">
+            <form
+                action="/book/receipt/{{ $tutor->slug }}/{{ $field->id }}/{{ $edulvl->id }}/{{ $date }}/{{ $start_time }}"
+                method="post">
                 @csrf
-                
+
+
+                <h5 class="mb-3">Discount : <span id="discount">IDR 0K</span></h5>
+                <h5 class="mb-3">Total Price : <span id="total">IDR 0K</span></h5>
+
+
                 @error('price')
                     <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
                         {{ 'Insufficient fund' }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    @enderror
-                    
-                    <h5 class="mb-3">Your current fund : IDR {{ auth()->user()->credit . 'K' }}</h5>
-                    <h5 class="mb-3">Discount : <span id="discount">IDR 0K</span></h5>
-                    <h5 class="mb-3">Total Price : <span id="total">IDR 0K</span></h5>
-                    
+                @enderror
 
 
-                    {{-- form inputs --}}
+                {{-- form inputs --}}
 
-                    <input type="hidden" name="price" id="price" value="0">
+                <input type="hidden" name="price" id="price" value="0">
+                <input type="hidden" name="p_method" id="p_method" value="">
 
-                    <select class="form-select mb-3" name="off" id="off" disabled>
-                        <option value="0" selected>No voucher set yet</option>
-                        @foreach($vouchers as $voucher)
+                <select class="form-select mb-3" name="off" id="off" disabled>
+                    <option value="0" selected>No voucher set yet</option>
+                    @foreach ($vouchers as $voucher)
                         <option value="{{ $voucher->discount }}">
-                            {{ $voucher->voucher_code . ' - ' . $voucher->discount . 'K off'}}
+                            {{ $voucher->voucher_code . ' - ' . $voucher->discount . 'K off' }}
                         </option>
-                        @endforeach
-                    </select>
+                    @endforeach
+                </select>
 
-                    <button type="submit" class="btn btn-success mb-5 d-flex justify-content-between" style="width: 150px;"> 
-                        <span>Confirm</span>
-                        <i class="bi bi-caret-right-fill" style="color: var(--white)"></i>
-                    </button>
-                
-                </form>
-            </div>
-            
+                <h5 class="mb-3">Your current fund : IDR {{ auth()->user()->credit . 'K' }}</h5>
+
+                <button type="submit" class="btn mb-5 d-flex justify-content-between fw-bold"
+                    style="width: 150px; background-color: #10CA00; color: var(--white)">
+                    <span>CONFIRM</span>
+                    <i class="bi bi-caret-right-fill" style="color: var(--white)"></i>
+                </button>
+
+            </form>
         </div>
 
-    <script>
+    </div>
 
-        
+    <script>
         // actual data
         const price = document.getElementById("price");
         const off = document.getElementById("off");
-        
+        const p_method = document.getElementById("p_method");
+
         // for displaying
         const discount = document.getElementById("discount");
         const total = document.getElementById("total");
-        
+
         let tempPrice = price.value;
 
         const pMethod = document.querySelectorAll(".payment-method");
@@ -175,9 +177,11 @@
                 });
                 e.classList.add("c-active");
                 off.disabled = false;
-                
+
+                p_method.value = e.id;
                 total.innerHTML = "IDR " + parseInt(e.dataset.price - off.value) + " K";
                 price.value = e.dataset.price - off.value;
+
 
                 tempPrice = price.value;
             });
@@ -188,6 +192,5 @@
             total.innerHTML = "IDR " + parseInt(tempPrice - off.value) + " K";
             price.value = tempPrice - off.value;
         });
-
     </script>
 @endsection

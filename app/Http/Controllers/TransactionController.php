@@ -12,16 +12,18 @@ use App\Models\Voucher;
 class TransactionController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         return view('book.index', [
             'title' => 'Book-a-Tutor',
             'primary' => Subject::where('level_id', 1)->get(),
-            'junior'=> Subject::where('level_id', 2)->get(),
+            'junior' => Subject::where('level_id', 2)->get(),
             'senior' => Subject::where('level_id', 3)->get()
         ]);
     }
 
-    public function tutor(Request $request){
+    public function tutor(Request $request)
+    {
 
         $request->validate([
             'subject_id' => ['required'],
@@ -35,20 +37,21 @@ class TransactionController extends Controller
         return view('book.tutor', [
             'title' => 'Available Tutors',
             'tutors' => Tutor::where('subject_id', $request->subject_id)
-                                ->vacant(date("Y-m-d"), $request->start_time)
-                                ->orderBy('rating', 'DESC')
-                                ->get(),
+                ->vacant(date("Y-m-d"), $request->start_time)
+                ->orderBy('rating', 'DESC')
+                ->get(),
             'expertise' => $expertise[0],
             'date' => date("Y-m-d"),
             'start_time' => $request->start_time,
         ]);
     }
 
-    public function checkout(Tutor $tutor, Field $field, EduLvl $edulvl, $date, $start_time){
+    public function checkout(Tutor $tutor, Field $field, EduLvl $edulvl, $date, $start_time)
+    {
 
         $vouchers = Voucher::where('membership_id', auth()->user()->membership_id)
-                            ->orderBy('discount', 'ASC')
-                            ->get();
+            ->orderBy('discount', 'ASC')
+            ->get();
 
         return view('book.checkout', [
             'title' => 'Checkout',
@@ -61,11 +64,15 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function receipt(Tutor $tutor, Field $field, EduLvl $edulvl, $date, $start_time, Request $request){
+    public function receipt(Tutor $tutor, Field $field, EduLvl $edulvl, $date, $start_time, Request $request)
+    {
 
+        // validate sufficient funds
         $request->validate([
-            'price' => 'lte:' . (int) auth()->user()->credit
+            'price' => 'lte:' . (int) auth()->user()->credit,
+            'p_method' => 'required'
         ]);
+
 
         return view('book.receipt', [
             'title' => 'Receipt',
@@ -74,7 +81,9 @@ class TransactionController extends Controller
             'edulvl' => $edulvl,
             'date' => $date,
             'start_time' => $start_time,
+            'p_method' => $request->p_method,
+            'price' => $request->price,
+            'discount' => $request->off 
         ]);
     }
-
 }
