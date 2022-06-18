@@ -84,7 +84,7 @@ a{
 .subject-container {
   padding: 0 10vw;
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   scroll-behavior: smooth;
   padding-top: 1em;
   padding-bottom: 1em;

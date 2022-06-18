@@ -7,6 +7,7 @@ use App\Models\EduLvl;
 use App\Models\Field;
 use App\Models\Subject;
 use App\Models\Tutor;
+use App\Models\Voucher;
 
 class TransactionController extends Controller
 {
@@ -44,6 +45,11 @@ class TransactionController extends Controller
     }
 
     public function checkout(Tutor $tutor, Field $field, EduLvl $edulvl, $date, $start_time){
+
+        $vouchers = Voucher::where('membership_id', auth()->user()->membership_id)
+                            ->orderBy('discount', 'ASC')
+                            ->get();
+
         return view('book.checkout', [
             'title' => 'Checkout',
             'tutor' => $tutor,
@@ -51,7 +57,7 @@ class TransactionController extends Controller
             'edulvl' => $edulvl,
             'date' => $date,
             'start_time' => $start_time,
-            'credit' => auth()->user()->credit
+            'vouchers' => $vouchers
         ]);
     }
 

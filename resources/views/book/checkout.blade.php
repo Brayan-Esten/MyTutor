@@ -83,33 +83,33 @@
         <div class="ms-5 mb-5 d-flex" style="width: 90%;">
 
             <div class="d-flex justify-content-around align-items-center me-5 payment-method"
-            data-price="101000">
+            data-price="101">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/ovo.jpg"
                         style="width: 100%; border-radius: 5px;
                     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);">
                 </div>
-                <h3>Rp. 101.000</h3>
+                <h3>IDR 101K</h3>
             </div>
 
             <div class="d-flex justify-content-around align-items-center me-5 payment-method"
-            data-price="102500">
+            data-price="102">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/gopay.png"
                         style="width: 100%; border-radius: 5px;
                     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);">
                 </div>
-                <h3>Rp. 102.500</h3>
+                <h3>IDR 102K</h3>
             </div>
 
             <div class="d-flex justify-content-around align-items-center me-5 payment-method"
-            data-price="100000">
+            data-price="100">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/dana.jpg"
                         style="width: 100%; border-radius: 5px;
                     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);">
                 </div>
-                <h3>Rp. 100.000</h3>
+                <h3>IDR 100K</h3>
             </div>
 
         </div>
@@ -117,33 +117,56 @@
         <div class="col-lg-4 ms-5 mb-5">
             <form action="/book/receipt/{{ $tutor->slug }}/{{ $field->id }}/{{ $edulvl->id }}/{{ $date }}/{{ $start_time }}" method="post">
                 @csrf
-                <input type="hidden" name="price" id="price" value="">
-
+                
                 @error('price')
                     <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
                         {{ 'Insufficient fund' }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                @enderror
+                    @enderror
+                    
+                    <h5 class="mb-3">Your current fund : IDR {{ auth()->user()->credit . 'K' }}</h5>
+                    <h5 class="mb-3">Discount : <span id="discount">IDR 0K</span></h5>
+                    <h5 class="mb-3">Total Price : <span id="total">IDR 0K</span></h5>
+                    
 
-                <h5 class="mb-3">Your current fund : Rp. {{ $credit }}</h5>
-                <h5 class="mb-3">Discount : <span id="discount">0</span></h5>
+
+                    {{-- form inputs --}}
+
+                    <input type="hidden" name="price" id="price" value="0">
+
+                    <select class="form-select mb-3" name="off" id="off" disabled>
+                        <option value="0" selected>No voucher set yet</option>
+                        @foreach($vouchers as $voucher)
+                        <option value="{{ $voucher->discount }}">
+                            {{ $voucher->voucher_code . ' - ' . $voucher->discount . 'K off'}}
+                        </option>
+                        @endforeach
+                    </select>
+
+                    <button type="submit" class="btn btn-success mb-5 d-flex justify-content-between" style="width: 150px;"> 
+                        <span>Confirm</span>
+                        <i class="bi bi-caret-right-fill" style="color: var(--white)"></i>
+                    </button>
                 
-                <select class="form-select mb-3" name="voucher">
-                    <option value="0">No voucher set yet</option>
-                </select>
-                <button type="submit" class="btn btn-success mb-5 d-flex justify-content-between" style="width: 150px;"> 
-                    <span>Confirm</span>
-                    <i class="bi bi-caret-right-fill" style="color: var(--white)"></i>
-                </button>
-                
-            </form>
+                </form>
+            </div>
+            
         </div>
 
-    </div>
-
     <script>
+
+        
+        // actual data
         const price = document.getElementById("price");
+        const off = document.getElementById("off");
+        
+        // for displaying
+        const discount = document.getElementById("discount");
+        const total = document.getElementById("total");
+        
+        let tempPrice = price.value;
+
         const pMethod = document.querySelectorAll(".payment-method");
         pMethod.forEach(e => {
             e.addEventListener("click", function() {
@@ -151,8 +174,20 @@
                     e.classList.remove("c-active");
                 });
                 e.classList.add("c-active");
-                price.value = e.dataset.price;
+                off.disabled = false;
+                
+                total.innerHTML = "IDR " + parseInt(e.dataset.price - off.value) + " K";
+                price.value = e.dataset.price - off.value;
+
+                tempPrice = price.value;
             });
         });
+
+        off.addEventListener("change", function() {
+            discount.innerHTML = "IDR " + parseInt(off.value) + " K";
+            total.innerHTML = "IDR " + parseInt(tempPrice - off.value) + " K";
+            price.value = tempPrice - off.value;
+        });
+
     </script>
 @endsection

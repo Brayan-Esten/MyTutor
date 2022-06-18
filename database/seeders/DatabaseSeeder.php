@@ -11,6 +11,7 @@ use App\Models\Membership;
 use App\Models\Subject;
 use App\Models\Tutor;
 use App\Models\Transaction;
+use App\Models\Voucher;
 
 
 class DatabaseSeeder extends Seeder
@@ -23,16 +24,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        // pre-defined data
+
         User::create([
             'membership_id' => 1,
             'name' => 'Brayan Esten',
             'email' => 'bryanesten1221@gmail.com',
             'password' => bcrypt('123'),
-            'credit' => 150000,
+            'credit' => 150,
             'level' => 14
         ]);
 
-        User::factory(3)->create();
 
         Membership::create([
             'tier' => 'silver'
@@ -245,8 +247,18 @@ class DatabaseSeeder extends Seeder
             'level_id' => 3
         ]);
 
+
+
+        // using factories
+
+
+        User::factory(3)->create();
+
         Tutor::factory(80)->create();
 
+        Voucher::factory(30)->create();
+
         Transaction::factory(160)->create();
+
     }
 }
