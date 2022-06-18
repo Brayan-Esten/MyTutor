@@ -100,20 +100,20 @@
 
             <select class="form-select mb-3" name="start_time">
                 <option value="">Schedule Options</option>
-                <option value="07">07:00 - 08:00</option>
-                <option value="08">08:00 - 09:00</option>
-                <option value="09">09:00 - 10:00</option>
-                <option value="10">10:00 - 11:00</option>
-                <option value="11">11:00 - 12:00</option>
-                <option value="12">12:00 - 13:00</option>
-                <option value="13">13:00 - 14:00</option>
-                <option value="14">14:00 - 15:00</option>
-                <option value="15">15:00 - 16:00</option>
-                <option value="16">16:00 - 17:00</option>
-                <option value="17">17:00 - 18:00</option>
-                <option value="18">18:00 - 19:00</option>
-                <option value="19">19:00 - 20:00</option>
-                <option value="20">20:00 - 21:00</option>
+                <option value="07">07:00 - 09:00</option>
+                <option value="08">08:00 - 10:00</option>
+                <option value="09">09:00 - 11:00</option>
+                <option value="10">10:00 - 12:00</option>
+                <option value="11">11:00 - 13:00</option>
+                <option value="12">12:00 - 14:00</option>
+                <option value="13">13:00 - 15:00</option>
+                <option value="14">14:00 - 16:00</option>
+                <option value="15">15:00 - 17:00</option>
+                <option value="16">16:00 - 18:00</option>
+                <option value="17">17:00 - 19:00</option>
+                <option value="18">18:00 - 20:00</option>
+                <option value="19">19:00 - 22:00</option>
+                <option value="20">20:00 - 22:00</option>
             </select>
 
             <button type="submit" class="btn btn-primary mb-5">Find Tutor</button>

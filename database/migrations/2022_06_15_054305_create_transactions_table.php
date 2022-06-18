@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('tutor_id');
             $table->string('start_time');
+            $table->string('half_time');
+            $table->string('end_time');
             $table->date('date');
             $table->integer('price');
             $table->string('zoom_link');

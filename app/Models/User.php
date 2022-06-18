@@ -40,11 +40,11 @@ class User extends Authenticatable
 
     public function membership()
     {
-        return $this->belongsTo(Membership::class);
+        return $this->belongsTo(Membership::class, 'membership_id');
     }
 
-    public function transactions(){
+    public function transactions()
+    {
         return $this->hasMany(Transaction::class, 'user_id');
     }
-
 }

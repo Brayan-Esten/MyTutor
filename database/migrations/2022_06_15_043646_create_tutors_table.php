@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('schedule');
             $table->string('institution');
             $table->string('last_ed');
-            $table->text('bio');
             $table->text('teaching_approach');
             $table->float('rating');
             $table->timestamps();

@@ -17,11 +17,15 @@ class TransactionFactory extends Factory
     public function definition()
     {
         $start_time = '';
-        $rand = mt_rand(7, 20);
-        if($rand < 10) $start_time .= '0' . $rand;
-        else $start_time .= $rand;
+        $randTime = mt_rand(7, 20);
+        if($randTime < 10) $start_time .= '0' . $randTime;
+        else $start_time .= $randTime;
 
+        $half_time = (int) $start_time + 1;
+        if ($half_time < 10) $half_time = '0' . $half_time;
 
+        $end_time = (int) $start_time + 2;
+        if($end_time < 10) $end_time = '0' . $end_time;
 
         $date = '2022-';
 
@@ -33,16 +37,15 @@ class TransactionFactory extends Factory
         if ($randDay < 10) $date .= '0'. $randDay;
         else $date .= $randDay;
 
-
-        // $date = '2022' . '-' . mt_rand(1, 12) . '-' . mt_rand(1, 30);
-
         return [
             //
             'user_id' => mt_rand(1, 4),
             'tutor_id' => mt_rand(1, 80),
             'start_time' => $start_time,
+            'half_time' => $half_time,
+            'end_time' => $end_time,
             'date' => $date,
-            'price' => 100000,
+            'price' => mt_rand(90, 102),
             'zoom_link' => 'https://zoom.us/' . $this->faker->regexify('[A-Z]{5}[0-4]{3}')
 
         ];

@@ -18,13 +18,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'membership_id' => $this->faker->numberBetween(1, 3),
+            'membership_id' => mt_rand(1, 3),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'level' => $this->faker->numberBetween(1, 30),
-            'credit' => 150,
+            'fund' => mt_rand(70, 150),
+
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];
     }

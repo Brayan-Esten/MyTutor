@@ -31,7 +31,7 @@ class TutorFactory extends Factory
         $institutions = ['School', 'University'];
         $institution = $institutions[mt_rand(0, 1)];
 
-        $ed_list = ['High-School Student', 'College-Student', 'Teacher', 'Lecturer', 'Instructor'];
+        $ed_list = ['High-School Student', 'Teacher', 'College Student', 'Lecturer'];
         if($institution == 'School') $last_ed = $ed_list[mt_rand(0, 1)];
         else $last_ed = $ed_list[mt_rand(2, 3)];
 
@@ -57,7 +57,6 @@ class TutorFactory extends Factory
             'schedule' => $randSchedule,
             'institution' => $this->faker->city() . ' ' . $institution,
             'last_ed' => $last_ed,
-            'bio' => $this->faker->paragraph(1),
             'teaching_approach' => $teaching_approach,
             'rating' => $rating
         ];

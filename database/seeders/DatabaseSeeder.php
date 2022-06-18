@@ -31,8 +31,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Brayan Esten',
             'email' => 'bryanesten1221@gmail.com',
             'password' => bcrypt('123'),
-            'credit' => 150,
-            'level' => 14
+            'fund' => 500
         ]);
 
 
@@ -256,7 +255,7 @@ class DatabaseSeeder extends Seeder
 
         Tutor::factory(80)->create();
 
-        Voucher::factory(30)->create();
+        Voucher::factory(20)->create();
 
         Transaction::factory(160)->create();
 

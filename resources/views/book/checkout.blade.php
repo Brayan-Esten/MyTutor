@@ -82,7 +82,8 @@
         {{-- payment method --}}
         <div class="ms-5 mb-5 d-flex" style="width: 90%;">
 
-            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="101" id="ovo">
+            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="101"
+                id="ovo">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/ovo.jpg"
                         style="width: 100%; border-radius: 5px;
@@ -91,7 +92,8 @@
                 <h3>IDR 101K</h3>
             </div>
 
-            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="102" id="gopay">
+            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="102"
+                id="gopay">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/gopay.png"
                         style="width: 100%; border-radius: 5px;
@@ -100,7 +102,8 @@
                 <h3>IDR 102K</h3>
             </div>
 
-            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="100" id="dana">
+            <div class="d-flex justify-content-around align-items-center me-5 payment-method" data-price="100"
+                id="dana">
                 <div style="width: 100px; height: 100px;">
                     <img src="/img/payment/dana.jpg"
                         style="width: 100%; border-radius: 5px;
@@ -129,6 +132,12 @@
                     </div>
                 @enderror
 
+                @error('p_method')
+                    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                        {{ 'Please choose a payment method' }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @enderror
 
                 {{-- form inputs --}}
 
@@ -144,7 +153,7 @@
                     @endforeach
                 </select>
 
-                <h5 class="mb-3">Your current fund : IDR {{ auth()->user()->credit . 'K' }}</h5>
+                <h5 class="mb-3">Your current fund : IDR {{ auth()->user()->fund . 'K' }}</h5>
 
                 <button type="submit" class="btn mb-5 d-flex justify-content-between fw-bold"
                     style="width: 150px; background-color: #10CA00; color: var(--white)">

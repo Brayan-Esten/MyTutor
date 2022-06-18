@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Support\Facades\DB;
 
 class Tutor extends Model
 {
@@ -27,11 +26,24 @@ class Tutor extends Model
 
     public function scopeVacant($query, $date, $start_time)
     {
-        return $query->whereDoesntHave('transactions',
+        return $query->whereDoesntHave(
+            'transactions',
             fn ($query) =>
-                $query
-                ->where('start_time', 'LIKE', $start_time)
-                ->where('date', $date)
+            $query
+                ->where([
+                    ['start_time', 'LIKE', $start_time],
+                    ['date', $date]
+                ])
+                ->orWhere([
+                    ['half_time', 'LIKE', $start_time],
+                    ['date', $date]
+                ])
+                ->orWhere([
+                    ['end_time', 'LIKE', $start_time],
+                    ['date', $date]
+                ])
+                
+                
         );
     }
 

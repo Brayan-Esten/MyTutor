@@ -13,6 +13,6 @@ class Voucher extends Model
 
     public function membership()
     {
-        return $this->belongsTo(Membership::class);
+        return $this->belongsTo(Membership::class, 'membership_id');
     }
 }
