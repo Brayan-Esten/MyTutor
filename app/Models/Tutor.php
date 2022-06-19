@@ -12,7 +12,7 @@ class Tutor extends Model
     use Sluggable;
 
     protected $guarded = ['id'];
-    protected $with = ['transactions', 'subject'];
+    protected $with = ['subject'];
 
     public function transactions()
     {

@@ -2,34 +2,17 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page"
-                    href="/dashboard">
-                    <span data-feather="home" class="align-text-bottom"></span>
-                    Dashboard
+                <a class="nav-link {{ Request::is('dashboard/schedule') ? 'active' : '' }}" href="/dashboard/schedule">
+                    <span data-feather="calendar" class="align-text-bottom"></span>
+                    My Schedule
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    My Posts
+                <a class="nav-link {{ Request::is('dashboard/history') ? 'active' : '' }}" href="/dashboard/history">
+                    <span class="ms-1 me-1"><i class="bi bi-clock-history"></i></span>
+                    History
                 </a>
             </li>
         </ul>
-
-        @can('admin')
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Administrator</span>
-            </h6>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}"
-                        href="/dashboard/categories">
-                        <span data-feather="grid"></span>
-                        Post Categories
-                    </a>
-                </li>
-            </ul>
-        @endcan
-
     </div>
 </nav>

@@ -1,9 +1,9 @@
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--black); ">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
         <div class="container-fluid d-flex justify-content-around">
 
 
             {{-- left nav --}}
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
                 MyTutor
             </a>
 
@@ -36,9 +36,9 @@
 
                     {{-- upgrade membership nav --}}
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('membership*') ? 'active' : '' }}" 
+                        <a class="nav-link {{ Request::is('membership') ? 'active' : '' }}" 
                         href="/membership">
-                            Upgrade
+                            Membership
                         </a>
                     </li>
 
@@ -71,7 +71,7 @@
                                 
                                 {{-- edit profile btn --}}
                                 <li>
-                                    <a class="dropdown-item" href="/dashboard">
+                                    <a class="dropdown-item" href="/dashboard/schedule">
                                         <i class="bi bi-layout-text-sidebar-reverse"></i>
                                         Dashboard
                                     </a>

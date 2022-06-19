@@ -1,0 +1,232 @@
+
+.content-container{
+    display: flex;
+}
+
+.non-sidebar-container{
+    width: 100%;
+    min-height: 683px;
+}
+
+.upgrade-your-membership{
+    color: #f8b501;
+    font-size: 2.5rem;
+}
+
+.why-upgrade{
+    font-size: 1.5rem;
+}
+
+.why-upgrade-desc{
+    width: 50%;
+}
+
+.card-container{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+.card{
+    width: 270px;
+    height: 360px;
+    /* background-color: red; */
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px #000000;
+    position: relative;
+}
+
+.silver{
+    height: 60px;
+    /* background-color: black; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-image: linear-gradient(to bottom right, #BABABA, #D0D0D0, #E8E8E8, #F8F8F8 );
+    position: relative;
+   
+}
+.silver > img{
+    position: absolute;
+    left: 110px;
+    top: 5px;
+    height: 45px;
+    width: 45px;
+}
+
+.silver-price-container{
+    padding-top: 10px;
+    background-color: #BABABA;
+    height: 50px;
+    margin-top: 0;
+   text-align: center;
+   text-justify: center;
+}
+
+.price{
+    font-size: 25px;
+    font-weight: bolder;
+    margin: 0;
+}
+
+
+.silver-text{
+    position: absolute;
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+    text-justify: center;
+    left: 60px;
+    top: 15px;
+    font-weight:bold;
+    color: black;
+   
+}
+
+.silver-benefit-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+
+}
+
+
+
+.gold{
+    height: 60px;
+    /* background-color: black; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-image: linear-gradient(to bottom right, #FFDA16, #FFE037, #FFE660, #FFEE96 );
+    position: relative;
+   
+}
+.gold > img{
+    position: absolute;
+    left: 115px;
+    top: 5px;
+    height: 45px;
+    width: 45px;
+}
+.gold-text{
+    position: absolute;
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+    text-justify: center;
+    left: 60px;
+    top: 15px;
+    font-weight:bold;
+    color: black;
+   
+}
+.gold-price-container{
+    background-color: #f2cb08;
+    padding-top: 10px;
+    height: 50px;
+    margin-top: 0;
+   text-align: center;
+   text-justify: center;
+}
+
+.gold-benefit-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+}
+
+
+
+.diamond{
+    height: 60px;
+    /* background-color: black; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-image: linear-gradient(to bottom right, #74E5FF, #8DEAFF, #BFF3FF, #D4F7FF);
+    position: relative;
+   
+}
+.diamond > img{
+    position: absolute;
+    left: 115px;
+    top: 5px;
+    height: 45px;
+    width: 45px;
+}
+.diamond-text{
+    position: absolute;
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+    text-justify: center;
+    left: 60px;
+    top: 15px;
+    font-weight:bold;
+    color: black;
+    
+}
+
+.diamond-price-container{
+    background-color: #53d6f4;
+    padding-top: 10px;
+    height: 50px;
+    margin-top: 0;
+   text-align: center;
+   text-justify: center;
+}
+
+.diamond-benefit-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+}
+
+
+
+#learnmore-silver{
+    height: 50px;
+    background-color:#BABABA;
+    border: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight:bold;
+    color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#learnmore-gold{
+    height: 50px;
+    background-color:#FFDA16;
+    border: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight:bold;
+    color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
+#learnmore-diamond{
+    height: 50px;
+    background-color:#74E5FF;
+    border: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight:bold;
+    color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.list{
+    margin-bottom: 10px;
+}

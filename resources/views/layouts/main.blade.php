@@ -14,7 +14,13 @@
 
     {{-- custom stylesheet --}}
     <link rel="stylesheet" href="/css/style.css">
-    
+
+    {{-- buat home --}}
+    <link rel="stylesheet" href="/css/home.css">
+
+    {{-- buat membership --}}
+    <link rel="stylesheet" href="/css/membership.css">
+
 </head>
 
 <body>

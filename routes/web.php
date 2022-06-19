@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
 
 
@@ -32,6 +32,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
+// logout route
+Route::post('/logout', [LoginController::class, 'logout']);
+
 
 // home
 Route::get('/', function () {
@@ -44,6 +47,14 @@ Route::get('/', function () {
 Route::get('/about', function(){
     return view('about', [
         'title' => 'About'
+    ]);
+});
+
+
+// membership
+Route::get('membership', function(){
+    return view('membership', [
+        'title' => 'Membership'
     ]);
 });
 
@@ -68,23 +79,10 @@ Route::post('/book/receipt/{tutor}/{field}/{edulvl}/{date}/{start_time}', [Trans
 
 
 
-Route::post('/logout', [LoginController::class, 'logout']);
+// dashbooard routes
 
-Route::get('/dashboard', function(){
+Route::get('/dashboard/schedule', [DashboardController::class, 'schedule'])
+->middleware('auth');
 
-    return view('dashboard.index');
-
-})->middleware('auth');
-
-Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
-
-Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-
-Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
-
-Route::get('test/design', function(){
-    return view('tutor', [
-        'title' => 'test',
-        'active' => 'test'
-    ]);
-});
+Route::get('/dashboard/history', [DashboardController::class, 'history'])
+->middleware('auth');

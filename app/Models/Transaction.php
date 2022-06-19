@@ -11,6 +11,9 @@ class Transaction extends Model
     
     protected $guarded = ['id'];
 
+    // hapus klo lag queryny
+    protected $with = ['tutor'];
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
