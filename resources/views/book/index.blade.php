@@ -142,8 +142,8 @@
                 <option value="20" {{ 20 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     20:00 - 22:00
                 </option>
-                <option value="22">
-                    22:00 - 00:00
+                <option value="21">
+                    21:00 - 23:00
                 </option>
             </select>
 

@@ -93,4 +93,5 @@ Route::get('/dashboard/schedule', [DashboardController::class, 'schedule'])
 Route::get('/dashboard/history', [DashboardController::class, 'history'])
 ->middleware('auth');
 
-Route::get('/fund', [DashboardController::class, 'addFund']);
+Route::get('/fund', [DashboardController::class, 'addFund'])
+->middleware('auth');
