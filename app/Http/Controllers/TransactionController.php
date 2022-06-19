@@ -29,7 +29,7 @@ class TransactionController extends Controller
                 'fund' => auth()->user()->fund - $request->upgrade_price
             ]);
 
-        return redirect('/membership')->with('success_upgrade', 'Successfuly upgraded to ' . $membership->tier . ' tier');
+        return redirect('/membership')->with('success_upgrade', 'Upgraded successfuly to ' . $membership->tier . ' tier');
     }
 
     public function index()

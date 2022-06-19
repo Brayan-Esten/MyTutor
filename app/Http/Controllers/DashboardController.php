@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Transaction;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -37,5 +38,14 @@ class DashboardController extends Controller
             'title' => 'History',
             'data' => $data
         ]);
+    }
+
+    public function addFund(){
+        User::where('id', auth()->user()->id)
+            ->update([
+                'fund' => auth()->user()->fund + 500
+            ]);
+
+        return redirect('/dashboard/schedule')->with('success_funding', 'IDR 500K added successfully to your account');
     }
 }

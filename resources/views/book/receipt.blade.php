@@ -4,7 +4,8 @@
     <div class="mt-5 d-flex flex-column align-items-center" style="width: 80%; margin:auto;">
 
         <i class="bi bi-check-circle-fill" style="color: #10CA00; font-size: 3rem"></i>
-        <h3 class="text-center fw-bold mb-5" style="color: #10CA00">Booking Successful</h3>
+        <h3 class="text-center fw-bold" style="color: #10CA00">Booking Successful</h3>
+        <small class="text-center mb-5" style="var(--black)">Please check your dashboard for your schedule</small>
 
         <div class="rounded d-flex"
             style="width: 55%; background-color: var(--white);

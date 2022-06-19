@@ -13,6 +13,21 @@
                     History
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/fund">
+                    <span class="ms-1 me-1"><i class="bi bi-cash"></i></span>
+                    Add Fund
+                </a>
+            </li>
+            <li class="nav-item">
+                @if (session()->has('success_funding'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success_funding') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+            </li>
         </ul>
     </div>
 </nav>

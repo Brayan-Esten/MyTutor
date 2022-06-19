@@ -58,10 +58,13 @@ Route::get('/membership', function(){
     ]);
 });
 
+// upgrade membership
 Route::post('/upgrade/{membership:id}', [TransactionController::class, 'upgrade']);
 
 
-// book route
+
+
+// book routes
 
 // display subjects
 Route::get('/book', [TransactionController::class, 'index'])
@@ -88,3 +91,5 @@ Route::get('/dashboard/schedule', [DashboardController::class, 'schedule'])
 
 Route::get('/dashboard/history', [DashboardController::class, 'history'])
 ->middleware('auth');
+
+Route::get('/fund', [DashboardController::class, 'addFund']);

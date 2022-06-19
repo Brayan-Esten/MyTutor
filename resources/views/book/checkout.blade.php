@@ -60,8 +60,12 @@
                     <div>
                         <i class="bi bi-star-fill" style="color: var(--yellow)"></i>
                         <span> {{ $tutor->rating }}</span>
-                        <div>
+                        <div class="mt-3">
                             <p style="text-transform: capitalize">Expertise : {{ $field->name }}</p>
+                            <p style="text-transform: capitalize; margin-top: -20px">
+                                Method :
+                                {{ $tutor->teaching_approach }}
+                            </p>
                         </div>
                     </div>
 

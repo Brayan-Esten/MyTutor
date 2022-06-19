@@ -49,8 +49,12 @@
                             <div>
                                 <i class="bi bi-star-fill" style="color: var(--yellow)"></i>
                                 <span> {{ $tutor->rating }}</span>
-                                <div>
-                                    <p style="text-transform: capitalize">Expertise : {{ $expertise->field->name }}</p>
+                                <div class="mt-3">
+                                    <p style="text-transform: capitalize;">Expertise : {{ $expertise->field->name }}</p>
+                                    <p style="text-transform: capitalize; margin-top: -20px">
+                                        Method : 
+                                        {{ $tutor->teaching_approach }}
+                                    </p>
                                 </div>
                             </div>
 
@@ -78,7 +82,7 @@
                     </div>
                 @endforeach
             @else
-                <p class="text-center fs-4">No post found</p>
+                <p class="text-center fs-4">No tutor found</p>
             @endif
 
         </div>
