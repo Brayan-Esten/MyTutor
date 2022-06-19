@@ -29,22 +29,25 @@ class DatabaseSeeder extends Seeder
         User::create([
             'membership_id' => 1,
             'name' => 'Brayan Esten',
-            'email' => 'bryanesten1221@gmail.com',
+            'email' => 'brayans10@mail.com',
             'password' => bcrypt('123'),
             'fund' => 500
         ]);
 
 
         Membership::create([
-            'tier' => 'silver'
+            'tier' => 'silver',
+            'upgrade_price' => 0
         ]);
 
         Membership::create([
-            'tier' => 'gold'
+            'tier' => 'gold',
+            'upgrade_price' => 250
         ]);
 
         Membership::create([
-            'tier' => 'diamond'
+            'tier' => 'diamond',
+            'upgrade_price' => 500
         ]);
 
 

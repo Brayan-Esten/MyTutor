@@ -29,7 +29,7 @@ class RegisterController extends Controller
 
         // new user's membership by default is silver, and gets free 1 trial (free credit)
         $validated['membership_id'] = 1;
-        $validated['credit'] = 150000;
+        $validated['fund'] = 150000;
 
         User::create($validated);
 

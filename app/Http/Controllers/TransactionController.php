@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\EduLvl;
 use App\Models\Field;
+use App\Models\Membership;
 use App\Models\Subject;
 use App\Models\Transaction;
 use App\Models\Tutor;
@@ -16,6 +17,21 @@ use Database\Factories\TransactionFactory;
 class TransactionController extends Controller
 {
     //
+
+    public function upgrade(Membership $membership, Request $request){
+        $request->validate([
+            'upgrade_price' => 'lte:' . (int) auth()->user()->fund
+        ]);
+
+        User::where('id', auth()->user()->id)
+            ->update([
+                'membership_id' => $membership->id,
+                'fund' => auth()->user()->fund - $request->upgrade_price
+            ]);
+
+        return redirect('/membership')->with('success_upgrade', 'Successfuly upgraded to ' . $membership->tier . ' tier');
+    }
+
     public function index()
     {
         return view('book.index', [

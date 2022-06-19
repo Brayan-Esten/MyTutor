@@ -52,11 +52,13 @@ Route::get('/about', function(){
 
 
 // membership
-Route::get('membership', function(){
+Route::get('/membership', function(){
     return view('membership', [
         'title' => 'Membership'
     ]);
 });
+
+Route::post('/upgrade/{membership:id}', [TransactionController::class, 'upgrade']);
 
 
 // book route

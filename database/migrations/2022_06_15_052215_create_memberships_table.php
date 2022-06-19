@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
             $table->string('tier');
+            $table->integer('upgrade_price');
             $table->timestamps();
         });
     }
