@@ -56,10 +56,11 @@ Route::get('/membership', function(){
     return view('membership', [
         'title' => 'Membership'
     ]);
-});
+})->middleware('auth');
 
 // upgrade membership
-Route::post('/upgrade/{membership:id}', [TransactionController::class, 'upgrade']);
+Route::post('/upgrade/{membership:id}', [TransactionController::class, 'upgrade'])
+->middleware('auth');
 
 
 
