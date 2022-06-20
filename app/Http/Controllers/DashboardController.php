@@ -47,6 +47,6 @@ class DashboardController extends Controller
                 'fund' => auth()->user()->fund + 500
             ]);
 
-        return redirect('/dashboard/schedule')->with('success_funding', 'IDR 500K added successfully to your account');
+        return back()->with('success_funding', 'IDR 500K added successfully to your account');
     }
 }
