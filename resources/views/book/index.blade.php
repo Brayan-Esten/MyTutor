@@ -100,46 +100,46 @@
 
             <select class="form-select mb-3" name="start_time">
                 <option value="">Schedule Options</option>
-                <option value="07" {{ 7 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="07" {{ 7 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     07:00 - 09:00
                 </option>
-                <option value="08" {{ 8 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="08" {{ 8 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     08:00 - 10:00
                 </option>
-                <option value="09" {{ 9 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="09" {{ 9 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     09:00 - 11:00
                 </option>
-                <option value="10" {{ 10 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="10" {{ 10 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     10:00 - 12:00
                 </option>
-                <option value="11" {{ 11 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="11" {{ 11 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     11:00 - 13:00
                 </option>
-                <option value="12" {{ 12 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="12" {{ 12 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     12:00 - 14:00
                 </option>
-                <option value="13" {{ 13 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="13" {{ 13 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     13:00 - 15:00
                 </option>
-                <option value="14" {{ 14 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="14" {{ 14 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     14:00 - 16:00
                 </option>
-                <option value="15" {{ 15 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="15" {{ 15 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     15:00 - 17:00
                 </option>
-                <option value="16" {{ 16 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="16" {{ 16 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     16:00 - 18:00
                 </option>
-                <option value="17" {{ 17 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="17" {{ 17 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     17:00 - 19:00
                 </option>
-                <option value="18" {{ 18 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="18" {{ 18 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     18:00 - 20:00
                 </option>
-                <option value="19" {{ 19 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="19" {{ 19 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     19:00 - 22:00
                 </option>
-                <option value="20" {{ 20 < (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
+                <option value="20" {{ 20 <= (int) date('H', strtotime(date('Y-m-d H:i:s'))) ? 'disabled' : '' }}>
                     20:00 - 22:00
                 </option>
                 <option value="21">
