@@ -30,7 +30,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('membership*') ? 'active' : '' }}" 
                         href="/membership">
-                            Upgrade
+                            Membership
                         </a>
                     </li>
 
