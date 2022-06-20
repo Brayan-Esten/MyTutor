@@ -30,8 +30,9 @@ class DashboardController extends Controller
     {
 
         $data = Transaction::where('user_id', auth()->user()->id)
-            ->where('date', '<', date("Y-m-d"))
+            ->where('date', '<=', date("Y-m-d"))
             ->orderBy('date', 'DESC')
+            ->orderBy('end_time', 'DESC')
             ->get();
 
         return view('dashboard.history', [
